@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register With Us</title>
+</head>
+<body>
+<form method="POST" action="http://http-inspector.glitch.me">
+    <label for="Email">Email</label>
+    <input id="Email" name="Email" type="email" placeholder="Valid Email Required!">
+    <br>
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" placeholder="Enter Password Here">
+    <br>
+    Bio <br>
+    <textarea name="bio_area" id="bio_area" cols="50" rows="5" placeholder="Please tell us a little about yourself!"></textarea>
+<h3>How did you hear about us?</h3>
+    <label for="billboard">
+       Billboard<input id="billboard" type="radio" name="radio_question_1" value="a">
+    </label><br>
+    <label for="radio_advertisement">
+        Radio Advertisement<input id="radio_advertisement" type="radio" name="radio_question_1" value="b">
+    </label><br>
+    <label for="internet_advertisement">
+        Internet Advertisement<input id="internet_advertisement" type="radio" name="radio_question_1" value="c">
+    </label><br>
+    <label for="other">
+        Other<input id="other" type="radio" name="radio_question_1" value="d">
+    </label><br>
+    <textarea name="other_textarea" id="other_textarea" cols="50" rows="5" placeholder="If other, please describe in this box"></textarea>
+<h3>What kind of web browser are you using?</h3>
+    <select name="web_browser">
+        <option value="google_chrome">Google Chrome</option>
+        <option value="mozilla_firefox">Mozilla FireFox</option>
+        <option value="safari" selected>Safari</option>
+        <option value="opera">Opera</option>
+        <option value="internet_explorer">Internet Explorer</option>
+    </select>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
