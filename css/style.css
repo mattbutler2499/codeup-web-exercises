@@ -2,20 +2,76 @@
 .mainheading{
     text-align: center;
 }
-/*Makes all the headers have the "Cornflower Blue color and underlines each one*/
+/*Makes all headers 1 and 2 have the "Gainsboro" color and underlines each one*/
 h1, h2 {
-    color: cornflowerblue;
+    color: gainsboro;
     text-decoration: underline;
 }
 /*Changes the background color of the page*/
-.background {
-    background-color: #2a2a2a;
+/*.background {
+    background-color: #2a2a2a;/
 }
-/*Changes the size of the four pictures in the middle of the site*/
+/*Changes the size of the six pictures in the middle of the site*/
 .picture_size {
-    height: 250px; width: 250px;
+    height: 500px; width: 550px;
 }
-/*Changes body background to image listed*/
+/*Changes body background to image listed and changes font of entire website*/
+html {
+    background: url(../img/sleek.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Oswald', sans-serif;
+}
+/*Made the list have a square instead of a bullet point and also changed the color to "Gainsboro" */
+li {
+    color: gainsboro;
+    list-style: square;
+}
+/*Gave my into class the Gainsboro color and centered the text under the main header*/
+.intro {
+    color: gainsboro;
+    text-align: center;
+}
 
+#customers {
+    font-family: 'Oswald', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
-
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+/*Made my even rows have a white background*/
+#customers tr:nth-child(even){
+    background-color: #f2f2f2;}
+/*Made my odd rows have a dark grey background*/
+#customers tr:nth-child(odd){
+    background-color: #2a2a2a;
+    color: gainsboro;}
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2a2a2a;
+    color: white;
+}
+/*Made my link have a default color of Gainsboro*/
+a:link {
+    color: gainsboro;
+}
+/*Made my link have a color of purple after it has been visited*/
+a:visited {
+    color: purple;
+}
+/*Made my link have a color of deepskyblue as its being hovered*/
+a:hover {
+    color:deepskyblue;
+}
+/*Made my link have a color of green if its clicked in*/
+a:active {
+    color: chartreuse;
+}
