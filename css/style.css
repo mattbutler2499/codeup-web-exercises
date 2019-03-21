@@ -1,6 +1,21 @@
-.fancy-header {
-    color:purple;
+/*Moves the header to the center*/
+.mainheading{
     text-align: center;
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: x-large;
 }
+/*Makes all the headers have the "Cornflower Blue color and underlines each one*/
+h1, h2 {
+    color: cornflowerblue;
+    text-decoration: underline;
+}
+/*Changes the background color of the page*/
+.background {
+    background-color: #2a2a2a;
+}
+/*Changes the size of the four pictures in the middle of the site*/
+.picture_size {
+    height: 250px; width: 250px;
+}
+/*Changes body background to image listed*/
+
+
+
