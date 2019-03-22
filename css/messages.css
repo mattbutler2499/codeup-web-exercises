@@ -1,0 +1,48 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+
+.box-blue {
+     background-color: cornflowerblue ;
+     color: blue;
+     padding: 8px;
+     border: .5px lightgrey;
+     margin: .5em;
+     border-style: solid;
+     border-radius: 5px;
+    opacity:.6;
+ }
+.box-green {
+    background-color: lightgreen;
+    color:green;
+    padding: 8px;
+    border: .5px lightgrey;
+    margin: .5em;
+    border-style: solid;
+    border-radius: 5px;
+    opacity:.6;
+}
+.box-yellow {
+    background-color: khaki;
+    color: darkgoldenrod;
+    padding: 8px;
+    border: .5px lightgray;
+    margin: .5em;
+    border-style: solid;
+    border-radius: 5px;
+    opacity:.6;
+}
+.box-red {
+    background-color: salmon;
+    color: darkred;
+    padding: 8px;
+    border: .5px lightgrey;
+    margin: .5em;
+    border-style: solid;
+    border-radius: 5px;
+    opacity:.6;
+}
