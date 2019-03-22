@@ -13,7 +13,8 @@ h1, h2 {
 }
 /*Changes the size of the six pictures in the middle of the site*/
 .picture_size {
-    height: 500px; width: 550px;
+    height: 500px;
+    width: 550px;
 }
 /*Changes body background to image listed and changes font of entire website*/
 html {
@@ -47,7 +48,7 @@ li {
 }
 /*Made my even rows have a white background*/
 #customers tr:nth-child(even){
-    background-color: #f2f2f2;}
+    background-color: gainsboro;}
 /*Made my odd rows have a dark grey background*/
 #customers tr:nth-child(odd){
     background-color: #2a2a2a;
@@ -74,4 +75,9 @@ a:hover {
 /*Made my link have a color of green if its clicked in*/
 a:active {
     color: chartreuse;
+}
+.text {
+    color: gainsboro;
+    font-family: 'Oswald', sans-serif;
+
 }

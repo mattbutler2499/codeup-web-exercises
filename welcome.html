@@ -10,24 +10,24 @@
 <header class="background">
     <h1 class="mainheading">Welcome to Veridian Dynamics!</h1>
     <div class="intro">
-    At Veridian Dynamics, <strong>we</strong> solve <em>your</em> problems with <em><strong>technology</strong></em>.
+        At Veridian Dynamics, <strong>we</strong> solve <em>your</em> problems with <em><strong>technology</strong></em>.
     </div>
 </header>
 <hr>
 <main>
     <body>
     <h2 class="background">Core Values</h2>
-        <ul>
-            <li>Competence</li>
-            <li>Involvment</li>
-            <li>Technology</li>
-        </ul>
+    <ul>
+        <li>Competence</li>
+        <li>Involvment</li>
+        <li>Technology</li>
+    </ul>
     <h2>Our Process</h2>
-        <ol>
-            <li>Plan</li>
-            <li>Evaluate</li>
-            <li>Implement</li>
-        </ol>
+    <ol>
+        <li>Plan</li>
+        <li>Evaluate</li>
+        <li>Implement</li>
+    </ol>
     <h2>2020 Vision</h2>
     <ul>
         <li>Become #1 in Technology</li>
@@ -72,6 +72,43 @@
             </tr>
         </table>
     </section>
+    <br>
+    <label class="text" for="credit_card_number">Credit Card Number</label>
+    <input type="text" id="credit_card_number" name="credit_card_number" required placeholder="XXXX-XXXX-XXXX-XXXX">
+    <br>
+    <label class="text">Exp. M/Y</label>
+    <select name="security_month">
+        <option value="01">Jan.</option>
+        <option value="02">Feb.</option>
+        <option value="03">Mar.</option>
+        <option value="04">Apr.</option>
+        <option value="06">May</option>
+        <option value="07">Jun.</option>
+        <option value="08">Jul.</option>
+        <option value="09">Aug.</option>
+        <option value="10">Sept.</option>
+        <option value="11">Oct.</option>
+        <option value="12">Nov.</option>
+        <option value="05">Dec.</option>
+    </select>
+    <select name="security_day">
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+    </select>
+    <br>
+    <label class="text" for="billing_address">Billing Address</label>
+    <input type="text" id="billing_address" name="billing_address" required placeholder="77082">
+    <br>
+    <label class="text" for="city">City</label>
+    <input type="text" id="city" name="city" required>
+    <br>
+    <label class="text" for="checkbox">Keep this credit card on file for future transactions</label>
+    <input type="checkbox" id="checkbox" name="checkbox" checked>
+    <br>
+    <button type="submit">Buy Now!</button>
     <p class="intro"><em>All products come with our quality gaurantee&trade;</em></p>
 </main>
 <a href="#topofpage">Go to the top of the page.</a>
