@@ -1,0 +1,93 @@
+@media screen and (max-width: 375px) {
+    body {
+
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        font-family: 'Oswald', sans-serif;
+        padding: 0px;
+
+
+    }
+
+    h2 {
+        font-family: 'Oswald', sans-serif;
+    }
+
+    li {
+        background-color: darkgrey;
+        padding: 1em;
+        border: 3px solid white;
+
+    }
+
+    footer {
+        clear: none;
+    }
+    div a {
+        display: inline-block;
+        text-decoration: none;
+        color: #000;
+        font-family: 'Oswald', sans-serif;
+        font-size: 15px;
+        clear: both;
+    }
+
+    div img {
+        align-content: center;
+    }
+    .alert-info {
+        background-color: lightblue;
+        text-align: center;
+        font-size: 20px;
+        padding: 13px;
+        margin: .5em;
+        border: 1px solid darkgrey;
+        
+
+    }
+
+    #main {
+
+    }
+
+    .hidden-on-desktop {
+       
+    }
+
+    .nav-links {
+        text-align: center;
+        list-style: none;
+        overflow: auto;
+        padding: .5em;
+        font-family: 'Fredoka One', sans-serif;
+        margin-left: .5em;
+        margin-right: .5em;
+        font-size: 15px;
+
+    }
+
+    .header-img {
+        display: inline-block;
+    }
+
+    .main {
+        overflow: hidden;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .sub-section {
+        overflow: hidden;
+        font-style: italic;
+    }
+
+    #social-media-links img {
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        float: right;
+
+    }
+}
