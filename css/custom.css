@@ -1,0 +1,15 @@
+html, body {
+    overflow-x: hidden;
+}
+h1 {
+    text-align: center;
+    opacity:.6;
+    background-color: lightgray;
+    margin: 0 -9999rem;
+    padding: 0.25rem 9999rem;
+}
+.jumbotron{
+    background-image: url("https://java.codeup.com/examples/bootstrap/pizza.png");
+    height: 200px;
+    background-size: 100%;
+}
