@@ -34,18 +34,16 @@
     var premium = true;
     var offer = (notExpired && purchase2 || premium);
 
-    console.log(offer, premium)
+    console.log(offer, premium);
 
-    //Exercise 5
+    //or
 
-    // var username = 'codeup';
-    // var password = 'notastrongpassword';
-    // var password5 = true;
-    // var noUsername = true;
-    // var usernameMax20 = true;
-    // var noWhiteSpace = true;
+    var purchase2 = true;
+    var notExpired = true;
+    var premium = true;
+    var offer = (purchase2 || premium) && notExpired;
 
-
+    console.log(offer)
 </script>
 
 </body>

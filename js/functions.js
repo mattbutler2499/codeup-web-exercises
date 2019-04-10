@@ -1,48 +1,48 @@
 "use strict";
-
+//
+// // /**
+// //  * TODO:
+// //  * Create a function called 'sayHello' that takes a parameter 'name'.
+// //  * When called, the function should return a message that says hello to the passed in name.
+// //  *
+// //  * Example
+// //  * > sayHello("codeup") // returns "Hello, codeup!"
+// //  */
+//
+//     var name = "Matthew";
+//
+//     function sayHello(name) {
+//         return "Hello " + name ;
+//
+//     }
+//     console.log(sayHello(name));
+//
 // /**
 //  * TODO:
-//  * Create a function called 'sayHello' that takes a parameter 'name'.
-//  * When called, the function should return a message that says hello to the passed in name.
+//  * Call the function 'sayHello' and pass your name as a string literal argument.
+//  * Store the result of the function call in a variable named 'helloMessage'.
 //  *
-//  * Example
-//  * > sayHello("codeup") // returns "Hello, codeup!"
+//  * console.log 'helloMessage' to check your work
 //  */
-
-    var name = "Matthew";
-
-    function sayHello(name) {
-        return "Hello " + name ;
-
-    }
-    console.log(sayHello(name));
-
-/**
- * TODO:
- * Call the function 'sayHello' and pass your name as a string literal argument.
- * Store the result of the function call in a variable named 'helloMessage'.
- *
- * console.log 'helloMessage' to check your work
- */
-
-
-    var helloMessage = (sayHello("Matthew"));
-    console.log(helloMessage);
-
-
-/**
- * TODO:
- * Store your name as a string in a variable named 'myName', and pass that
- * variable to the 'sayHello' function. You should see the same output in the
- * console.
- */
-
-    var myName = "Matthew"
-    console.log (sayHello(myName));
+//
+//
+//     var helloMessage = (sayHello("Matthew"));
+//     console.log(helloMessage);
+//
+//
+// /**
+//  * TODO:
+//  * Store your name as a string in a variable named 'myName', and pass that
+//  * variable to the 'sayHello' function. You should see the same output in the
+//  * console.
+//  */
+//
+//     var myName = "Matthew";
+//     console.log (sayHello(myName));
 
 // Don't modify the following line, it generates a random number between 1 and 3
 // and stores it in a variable named random
-var random = Math.floor((Math.random() * 3) + 1);
+// var random = Math.floor((Math.random() * 3) + 1);
 
 /**
  * TODO:
@@ -61,11 +61,13 @@ var random = Math.floor((Math.random() * 3) + 1);
  * different result everytime you refresh the page if you are using the random
  * number)
  */
-
-    function isTwo(number) {
-       return number == 2;
-}
-console.log(isTwo(random));
+// var num2 = 2;
+// var num3 = 3;
+// var num1 = 1;
+//     function isTwo(num){
+//        return num === 2;
+// }
+//     console.log(isTwo(num3));
 
 /**
  * TODO:
@@ -78,9 +80,12 @@ console.log(isTwo(random));
  * > calculateTip(0.25, 25.50) // returns 6.37
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
-    function calculateTip(percentage, total) {
-        return percentage * total;
+function calculateTip(percentage, total) {
+    return percentage * total;
 }
+// console.log(calculateTip(.20, 500));
+// console.log(calculateTip(.20, 3800));
+
 
 /**
  * TODO:
@@ -88,7 +93,9 @@ console.log(isTwo(random));
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
-
+var totalBill = parseFloat(prompt("What was your bill total?"));//use ParseInt for whole numbers only!!
+var percentTip = parseFloat(prompt('How much would you like to tip?'));//use parseFloat for decimals!!
+console.log(calculateTip(percentTip, totalBill));
 /**
  * TODO:
  * Create a function named `applyDiscount`. This function should accept a price
@@ -103,4 +110,9 @@ console.log(isTwo(random));
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
+function applyDiscount(price, discount){
+    return price - (discount * price);
+}
+applyDiscount(45, .20);
 
