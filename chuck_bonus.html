@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Joke Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/chuck_style.css">
+</head>
+<body>
+<h1 class="text-center">Random Joke Generator</h1>
+
+<hr>
+
+<div class=" col text-center joke"></div>
+
+
+<button id="refreshChuck" class="ml-5 mt-5 btn-secondary">Chuck Norris Joke</button>
+<button id="refreshProg" class="mr-5 mt-5 btn-secondary float-right">Programming Quote</button>
+
+<script
+        src="http://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script>
+    //Request for Chuck Norris Joke on the page
+    $.ajax('http://api.icndb.com/jokes/random').done(function (data){
+            $('.joke').append(
+                "<h3>" + data.value.joke + "</h3>")
+    });
+
+    //Chuck Norris button to show new joke without refresh of page
+    $('#refreshChuck').click(function(){
+        $.ajax('http://api.icndb.com/jokes/random/').done(function(data){
+            $('.joke').html('<h3>' + data.value.joke + '</h3>')
+        })
+    });
+
+    //Programming Quote Request
+    $.ajax('http://quotes.stormconsultancy.co.uk/random.json').done(function (data){
+        $('.joke').append(
+            "<h3>" + data.quote + "</h3>")
+
+    });
+
+    //Programmin Quote button to show new quote without refresh of page
+    $('#refreshProg').click(function(){
+        $.ajax('http://quotes.stormconsultancy.co.uk/random.json').done(function(data){
+            $('.joke').html('<h3>' + data.quote + '</h3>')
+        })
+    });
+
+
+
+
+
+
+</script>
+</body>
+</html>

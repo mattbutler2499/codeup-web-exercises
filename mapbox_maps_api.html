@@ -1,0 +1,234 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MB Final Exercise</title>
+    <script src="js/mapbox-geocoder-utils.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        #map {
+            height: 70vh;
+            width: 1100px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        body {
+            margin: 0 auto;
+        }
+        #chipotleButton {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 15%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 18px;
+            text-align: center;
+            color: #fff;
+            background: #4b4c4d;
+
+        }
+        #kimSonButton {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 15%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 18px;
+            text-align: center;
+            color: #fff;
+            background: #4b4c4d;
+        }
+        #maggianoButton {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 15%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 18px;
+            text-align: center;
+            color: #fff;
+            background: #4b4c4d;
+        }
+        #fiveButton {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 15%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 18px;
+            text-align: center;
+            color: #fff;
+            background: #4b4c4d;
+        }
+        #fifteenButton {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 15%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 18px;
+            text-align: center;
+            color: #fff;
+            background: #4b4c4d;
+        }
+        #twentyButton {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 15%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 18px;
+            text-align: center;
+            color: #fff;
+            background: #4b4c4d;
+        }
+    </style>
+</head>
+<body>
+<h1>Map of Houston</h1>
+<div id='map'></div>
+<h1>My Favorite Food Spots</h1>
+<div>
+    <button id='chipotleButton'>Chipotle</button>
+</div>
+<div>
+    <button id='kimSonButton'>Kim Son</button>
+</div>
+<div>
+    <button id='maggianoButton'>Maggiano's</button>
+</div>
+<div>
+    <button id='fiveButton'>Zoom 5</button>
+</div>
+<div>
+    <button id='fifteenButton'>Zoom 15</button>
+</div>
+<div>
+    <button id='twentyButton'>Zoom 20</button>
+</div>
+<script>
+    //Map Default to Houston, TX
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: "mapbox://styles/mapbox/dark-v10",
+        zoom: 12,
+        center: [-95.3677, 29.7589]
+    });
+
+    //Chipotle Location with marker and text
+    document.getElementById('chipotleButton').addEventListener('click', function () {
+        map.flyTo({
+            center: [-95.58673, 29.73733],
+            zoom: 17
+        });
+    });
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-95.58673, 29.73733])
+        .addTo(map);
+
+    var chipotlePopup = new mapboxgl.Popup()
+        .setHTML("<p>Chipotle</p>")
+
+
+    marker.setPopup(chipotlePopup);
+
+    //Kim Son Location with marker and text
+    document.getElementById('kimSonButton').addEventListener('click', function () {
+        map.flyTo({
+            center: [-95.3677, 29.7589],
+            zoom: 17
+        });
+    });
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-95.3677, 29.7589])
+        .addTo(map);
+
+    var kimSonPopup = new mapboxgl.Popup()
+        .setHTML("<p>Kim Son</p>")
+
+
+
+    marker.setPopup(kimSonPopup);
+
+    //Maggianos Location with marker and text
+    document.getElementById('maggianoButton').addEventListener('click', function () {
+        map.flyTo({
+            center: [-95.4598, 29.7485],
+            zoom: 17
+        });
+    });
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-95.4598, 29.7485])
+        .addTo(map);
+
+    var maggPopup = new mapboxgl.Popup()
+        .setHTML("<p>Maggiano's Kitchen</p>")
+
+
+    marker.setPopup(maggPopup);
+
+    //Chipotle Location with marker and text
+    document.getElementById('fiveButton').addEventListener('click', function () {
+        map.flyTo({
+            center: [-95.58673, 29.73733],
+            zoom: 5
+        });
+    });
+    //Chipotle Location with marker and text
+    document.getElementById('fifteenButton').addEventListener('click', function () {
+        map.flyTo({
+            center: [-95.58673, 29.73733],
+            zoom: 15
+        });
+    });
+    //Chipotle Location with marker and text
+    document.getElementById('twentyButton').addEventListener('click', function () {
+        map.flyTo({
+            center: [-95.58673, 29.73733],
+            zoom: 20
+        });
+    });
+
+
+
+
+    //Chipotle geocode
+    geocode("11805 Westheimer Rd Ste 330, Houston, TX 77077", 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw').then(function(result){
+        console.log(result);
+    });
+
+    // Kim Son geocode
+    geocode("12750 Southwest Fwy Stafford, TX 77477", 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw').then(function(result){
+        console.log(result);
+    });
+
+    //Maggiano's geocode
+    geocode("2019 Post Oak Blvd, Houston, TX 77056 ", 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw').then(function(result){
+        console.log(result);
+    });
+
+</script>
+
+</body>
+</html>

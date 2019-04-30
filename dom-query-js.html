@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM: Query and Modify</title>
+</head>
+<body>
+
+<h1 id="main-header">Hello World!</h1>
+<div>
+    <label for="heading">Change Heading?</label>
+    <input id="heading" name="heading" type="text">
+</div>
+<div>
+    <button id="change-H1">Change H1.</button>
+</div>
+<ul>
+    <li class = "list-color" data-dbid="1">Item 1</li>
+    <li class = "list-color" data-dbid="2">Item 2</li>
+    <li class = "list-color" data-dbid="3">Item 3</li>
+    <li class = "list-color" data-dbid="4">Item 4</li>
+    <li class = "list-color" data-dbid="5">Item 5</li>
+</ul>
+<div>
+    <label for="list">Change List</label>
+    <input id="list" name="list" type="text">
+</div>
+<div>
+    <button id = "change-list">Change List</button>
+</div>
+<h2 id="sub-header">Hello Again.</h2>
+<p class="sub-paragraph">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+    culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<script>
+    (function() {
+        "use strict";
+        // TODO: Uncomment next line and get the main header element by id
+        // var mainHeader = document.getElementById("main-header");
+
+        // TODO: Set inner html of mainHeader to "JavaScript is Cool"
+        var newHeading = document.getElementById("heading");
+        var changeHeading = function(event){
+            var heading = document.getElementById("main-header");
+            heading.innerText = newHeading.value;
+        };
+        var addHeading = document.getElementById('change-H1');
+        addHeading.addEventListener('click', changeHeading, false);
+        //
+        // mainHeader.innerHTML = "JavaScript is Cool";
+        // TODO: Uncomment the next line and get the sub header element by id
+        var subHeader = document.getElementById("sub-header");
+
+        // TODO: Set the text color of subHeader to blue
+        // subHeader.style.color = "blue";
+        // TODO: Uncomment the next line and get all list items
+        var listItems = document.getElementsByTagName("li");
+
+        var newList = document.getElementsByClassName("list");
+
+        var changeListColor = function () {
+            var list = document.getElementsByClassName("list-color");
+            list.innerText = newList.innerText;
+        };
+        var listColorButton = document.getElementById("change-list");
+        listColorButton.addEventListener("click", changeListColor. false);
+
+        // TODO: Set text color on every other list item to grey
+        // TODO: Set text color of li with dbid = 1 to blue
+        // listItems[0].style.color = 'blue';
+        // listItems[2].style.color = 'green';
+        // listItems[4].style.color = 'green';
+
+        //or
+
+        for (var i = 0; listItems.length > i; i++){
+            var dbid = listItems[i].getAttribute("data-dbid");
+            if (dbid == 1){
+                listItems[i].style.color = "blue";
+            } else if(dbid % 2 === 0){
+                listItems[i].style.color = "green"
+            }
+        }
+
+
+        // TODO: Uncomment the next line and get all elements with class name sub-paragraph
+        var subParagraphs = document.getElementsByClassName('sub-paragraph');
+
+        // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
+        console.log(subParagraphs);
+        subParagraphs[0].innerText = 'Mission Accomplished!'
+
+    })();
+</script>
+</body>
+</html>

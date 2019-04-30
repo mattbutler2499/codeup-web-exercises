@@ -1,10 +1,8 @@
 //Q2
 // Option 1: make a function that you can use as a tool within your main function!!!
 function outputRow(num1, num2) {
-    var output = '';
     var total = num1 * num2;
-    output += num1 + 'x' + num2 + '=' + total;
-    return output;
+    return num1 + 'x' + num2 + '=' + total;
 }
 
 function showMultiplicationTable(num) {
@@ -86,3 +84,5 @@ for (var i = 1; 1 <10; i += 1){
 for (i = 100 ; i >=5 ; i-=5){
     console.log(i);
 }
+
+Write a loop that will spit out the numbers 1 and 100. Anything that

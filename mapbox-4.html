@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox 4</title>
+    <script src="js/mapbox-geocoder-utils.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        #map {
+            height: 80vh;
+            width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        body {
+            margin: 0 auto;
+        }
+        #flyPark {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 50%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            background: #ee8a65;
+        }
+        #flyHawaii {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 50%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            background: #007bff;
+        }
+
+    </style>
+</head>
+<body>
+<div id='map'></div>
+<button id='flyPark'>Zion National Park</button>
+<button id='flyHawaii'>Honolulu, Hawaii</button>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 12,
+        center: [-98.4951, 29.4246]
+    });
+    document.getElementById('flyPark').addEventListener('click', function () {
+        map.flyTo({
+            center: [-112.98905, 37.199276],
+            zoom: 16
+        });
+    });
+    document.getElementById('flyHawaii').addEventListener('click', function () {
+        map.flyTo({
+            center: [-157.8583, 21.3069],
+            zoom: 16
+        });
+    });
+
+
+    //
+    geocode("Zion National Park", 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw').then(function(result){
+        console.log(result);
+    })
+    //
+    // reverseGeocode({lng: -98.4861, lat: 29.4260}, 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw').then(function (result1) {
+    //     console.log(result1);
+    // });
+</script>
+
+</body>
+</html>

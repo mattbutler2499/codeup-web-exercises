@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Lecture</title>
+</head>
+<body>
+<!--Header Section-->
+<header>
+    <h1 id="my-greeting">Hello Andromeda!</h1>
+    <button id="my-alert">Alert</button>
+    <button id="cancel-alert">Cancel</button>
+</header>
+<!--Main Body-->
+<main>
+    <div id="first-div">
+        <h3 id="instructors-heading">Here are your instructors:</h3>
+        <ul id="instructors-list">
+            <li id="1" class="instructor andromeda">Justin</li>
+            <li id="2" class="instructor andromeda">Sophie</li>
+            <li id="3" class="instructor">Fer</li>
+            <li id="4" class="instructor">Daniel</li>
+            <li id="5" class="instructor andromeda">Ryan</li>
+        </ul>
+    </div>
+
+    <h3 id="favorite-things">Here are a few of my favorite things:</h3>
+    <ol>
+        <li class="favorites">Dogs</li>
+        <li class="favorites">Bob Ross</li>
+        <li class="favorites">Strawberry Milk</li>
+        <li class="favorites">Jazz</li>
+    </ol>
+    <div>
+        <label for="color">Change Greeting Color?</label>
+        <input id="color" name="color" type="text">
+    </div>
+    <div>
+        <button id="change">Change it.</button>
+    </div>
+
+    <div>
+        <label for="add">Add a New Instructor?</label>
+        <input id="add" name="add" type="text">
+    </div>
+    <div>
+        <input id="add-instructor" type="submit">
+    </div>
+</main>
+<!--Footer-->
+<footer>
+    <p>Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot snargaluff seeker: Hagrid broomstick mischief managed. Snitch Fluffy rock-cake, 9 ¾ dress robes I must not tell lies. Mudbloods yew pumpkin juice phials Ravenclaw’s Diadem 10 galleons Thieves Downfall. Ministry-of-Magic mimubulus mimbletonia Pigwidgeon knut phoenix feather other minister Azkaban. Hedwig Daily Prophet treacle tart full-moon Ollivanders You-Know-Who cursed. Fawkes maze raw-steak Voldemort Goblin Wars snitch Forbidden forest grindylows wool socks.</p>
+</footer>
+
+<script>
+    // var myName = document.getElementById('2');
+    // myName.addEventListener('click', function(e){alert(this.innerText)},false);
+    //
+    // var fullList = document.getElementById('instructors-list');
+    // fullList.addEventListener('click', function(e){alert(this.innerText)},false);
+    //
+    // var firstDiv = document.getElementById('first-div');
+    // firstDiv.addEventListener('click', function(e){alert(this.innerText)},false);
+
+    //target input field
+    var newColor = document.getElementById('color');
+    console.log(newColor);
+
+    //changes color of myGreeting to the input value of newColor
+    var changeColor = function(event){
+        var myGreeting = document.getElementById('my-greeting');
+        myGreeting.style.color = newColor.value;
+    };
+
+    //target the button
+    var changeButton = document.getElementById('change');
+    //addEventListener to button
+    changeButton.addEventListener('click', changeColor, false);
+
+
+    //another example of updating values with event listeners
+    var newInstructor = document.getElementById('add');
+
+    var changeInstructor = function(event){
+        var instructor = document.getElementById('5');
+        instructor.innerText = newInstructor.value;
+    };
+
+    var addInstructor = document.getElementById('add-instructor');
+    addInstructor.addEventListener('click', changeInstructor, false);
+
+    //target document itself to listen for key events
+    document.addEventListener('keyup', function(event){console.log('up')}, false);
+
+    //target a button with ID my-alert
+    var myAlert = document.getElementById('my-alert');
+    //create a function that gives an alert
+    var alertWindow = function(event){alert("Warning!")};
+    //add event to myAlert button to alert and console log "Warning"
+    myAlert.addEventListener('click',alertWindow,false);
+    myAlert.addEventListener('click',function(event){console.log("Warning")}, false)
+
+    //target button with ID cancel-alert
+    var cancelAlert = document.getElementById('cancel-alert');
+    //this function will remove previously assigned event listener to myAlert button
+    var removeAlert = function(event){
+        myAlert.removeEventListener('click',alertWindow,false);
+    };
+    //event listener attached to 2nd button, removes behavior from 1st
+    cancelAlert.addEventListener('click', removeAlert, false);
+
+
+</script>
+</body>
+</html>

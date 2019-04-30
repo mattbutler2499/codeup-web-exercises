@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox 3</title>
+    <script src="js/mapbox-geocoder-utils.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        #map {
+            height: 80vh;
+            width: 1200px;
+        }
+        h1 {
+            text-align: center;
+        }
+        body {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<h1>Lincoln Memorial</h1>
+<div id='map'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 12,
+        center: [-77.0369, 38.9072]
+    });
+
+    var marker = new mapboxgl.Marker()
+        .setLngLat([-77.0502, 38.8893])
+        .addTo(map);
+
+    var alamoPopup = new mapboxgl.Popup()
+        .setHTML("<p>Lincoln Memorial!</p>")
+        .addTo(map)
+
+    marker.setPopup(alamoPopup)
+
+
+    geocode("San Antonio", 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw').then(function (result) {
+        console.log(result);
+    })
+
+    reverseGeocode({lng: -98.4861, lat: 29.4260}, 'pk.eyJ1IjoibWF0dGJ1dGxlcjI0OTkiLCJhIjoiY2p1anY0M3JzMDF1NDQ0czEzaGdqMXpociJ9.fP70VfqbTfe1PpT348UXQw').then(function (result1) {
+        console.log(result1);
+    })
+</script>
+
+</body>
+</html>

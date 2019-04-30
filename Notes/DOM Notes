@@ -1,0 +1,37 @@
+Document Object Model (DOM)
+- global object that represents our HTML Document
+- tree-like representation of our HTML
+- gives us a map like structure to access and modify HTML elements
+What is the DOM?
+
+Ways to retrieve elements from the DOM?
+- retrieving by ID -> returns one HTML element with specific id
+- retrieving by class and tags -> returns an HTML Collection
+
+HTMLCollections
+- similar to arrays
+- can iterate through them with a for-loop
+
+Accessing Form Inputs through DOM
+- document.forms -> returns collection of forms in document
+- target by using form name
+- target input by using "name" Attribute
+
+Modifying Elements by accessing DOM
+
+Difference between innerHTML and innerText?
+- innerText online allows access and modification to things INSIDE html tags
+- innerHTML allows for manipulation of HTML tags
+
+Accessing and Modifying Attributes
+- hasAttribute -> returns a boolean
+- getAttribute -> returns a value
+- setAttribute -> change value
+- removeAttribute -> removes
+
+What is the data-* attribute?
+- a way to target elements by providing additional meta-data
+
+Accessing and Modifying Styles using DOM
+- access style property and name of CSS property
+- square brackets can be used if CSS property has a hyphen
