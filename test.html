@@ -1,21 +1,153 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        #foo {
-            background-color: red;
-        }
-    </style>
+    <title>dark sky</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/weather_map.css">
 </head>
 <body>
-<h1 class="foo">Codeup Rocks!</h1>
 
-<script src="/js/jquery.js"></script>
+<div class="container">
+    <div class="row">
+        <h3>Weather Application</h3>
+    </div>
+    <div class="row">
+        <p id="current-city"></p>
+    </div>
+    <div class="row">
+
+        <!--LONG / LAT INPUTS-->
+
+        <form>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">longitude and latitude</span>
+                </div>
+                <input id="longitude" type="text" aria-label="longitude" class="form-control">
+                <input id="latitude" type="text" aria-label="latitude" class="form-control">
+            </div>
+        </form>
+        <br>
+        <button type="submit" id="submit-coordinates" class="btn form-control">Submit</button>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-4" id="day-one">
+            <!--FORECAST-->
+        </div>
+        <div class="col-sm-4" id="day-two">
+            <!--FORECAST-->
+        </div>
+        <div class="col-sm-4" id="day-three">
+            <!--FORECAST-->
+        </div>
+    </div>
+    <hr>
+    <div class="row" id="map">
+        <!--WEATHER MAP-->
+    </div>
+</div>
+
+
+<!--Scripts-->
+<script src="js/keys.js"></script>
+
+<script src="js/jquery-2.2.4.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+
 <script>
-    "use strict";
-
-    $(document).ready(function() {
-        $('.foo').css('background-color', 'blue');
+    mapboxgl.accessToken = mapboxKey;
+    var darkSkyUrl = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/';
+    var darkSkyLat = 29.4241;
+    var darkSkyLong = -98.4936;
+    var darkSkyLang = "?lang=fr";
+    var darkSkyApiKey = darkSkyKey;
+    var mapBoxApiKey = mapboxKey;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v10',
+        center: [darkSkyLat, darkSkyLong],
+        zoom: 5
+    });
+    map.setCenter([darkSkyLat, darkSkyLong]);
+    var pullWeatherObj = {};
+    var darkSkyWeather = $.get(darkSkyUrl + darkSkyApiKey + "/" + darkSkyLat +',' + darkSkyLong + '/' +darkSkyLang);
+    darkSkyWeather.done(function(object){
+        pullWeatherObj = object;
+        dayOne();
+        dayTwo();
+        dayThree();
+    });
+    function getData(num) {
+        var day = num;
+        var tempHigh = parseFloat(pullWeatherObj.daily.data[day].apparentTemperatureHigh);
+        var tempLow = pullWeatherObj.daily.data[day].apparentTemperatureLow;
+        var icon = '<img src="icon/' + pullWeatherObj.daily.data[day].icon + '.svg">';
+        var weatherSummary = pullWeatherObj.daily.data[day].summary;
+        var humidity = pullWeatherObj.daily.data[day].humidity;
+        var wind = pullWeatherObj.daily.data[day].windSpeed;
+        var pressure = pullWeatherObj.daily.data[day].pressure;
+        var seconds = pullWeatherObj.daily.data[day].time;
+        var dateObject = new Date(seconds * 1000);
+        pullWeatherObj.data = [tempHigh, tempLow, icon, weatherSummary, wind, humidity, pressure, dateObject];
+        return pullWeatherObj;
+    }
+    function dayOne(num){
+        getData(0);
+        $('#day-one').html('<h4>' + Math.trunc(pullWeatherObj.data[0]) + " / " + Math.trunc(pullWeatherObj.data[1]) + '</h4>' +
+            '<p>' + pullWeatherObj.data[2] + '</p>' +
+            '<p>' + pullWeatherObj.data[3] + '</p>' +
+            '<p><strong>Humidity: </strong>' + pullWeatherObj.data[5] + '</p>' +
+            '<p><strong>Wind: </strong>' + pullWeatherObj.data[4] + '</p>' +
+            '<p><strong>Pressure: </strong>' + pullWeatherObj.data[6] + '</p>');
+        $('#date').append('<p>' + pullWeatherObj.data[7] + '</p>')
+    }
+    function dayTwo(num){
+        getData(1);
+        $('#day-two').html('<h4>' + Math.trunc(pullWeatherObj.data[0]) + " / " + Math.trunc(pullWeatherObj.data[1]) + '</h4>' +
+            '<p>' + pullWeatherObj.data[2] +'</p>' +
+            '<p>' + pullWeatherObj.data[3] + '</p>' +
+            '<p><strong>Humidity: </strong>' + pullWeatherObj.data[5] + '</p>' +
+            '<p><strong>Wind: </strong>' + pullWeatherObj.data[4] + '</p>' +
+            '<p><strong>Pressure: </strong>' + pullWeatherObj.data[6] + '</p>');
+    }
+    function dayThree(){
+        getData(2);
+        $('#day-three').html('<h4>' + Math.trunc(pullWeatherObj.data[0]) + " / " + Math.trunc(pullWeatherObj.data[1]) + '</h4>' +
+            '<p>' + pullWeatherObj.data[2]+ '</p>' +
+            '<p>' + pullWeatherObj.data[3] + '</p>' +
+            '<p><strong>Humidity: </strong>' + pullWeatherObj.data[5] + '</p>' +
+            '<p><strong>Wind: </strong>' + pullWeatherObj.data[4] + '</p>' +
+            '<p><strong>Pressure: </strong>' + pullWeatherObj.data[6] + '</p>');
+    }
+    $.get(darkSkyUrl + darkSkyApiKey + "/" + darkSkyLat + "," + darkSkyLong, {
+        daily: {
+            data: {
+                temperatureHigh: "",
+                temperatureLow: "",
+                cloudCover: "",
+                humidity: "",
+                windGust: "",
+                pressure: ""
+            }
+        }
+    }).done(function(data) {
+        console.log(data);
+        $('.currentSA').html(postsHtml(data));
     });
 </script>
 </body>

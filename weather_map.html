@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Weather Map</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet'/>
     <style>
         #map {
             height: 55vh;
@@ -14,122 +15,104 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         h1 {
             text-align: center;
         }
+
         body {
             margin: 0 auto;
             background-color: #4f76ac;
         }
+
         div {
             background-color: #9cb2c4;
         }
-
     </style>
 </head>
 <body>
-<h1 class ="text-center">Weather Application</h1>
-<h3 class="text-center">San Antonio</h3>
+<h1 class="text-center">Weather Application</h1>
+<h3 class="text-center location"></h3>
 <div class="containmer col-12 text-center">
-    <div class="row bg-muted">
-        <div class="border border-secondary text-center first-day col-sm">
-            <h3 class="mt-3 text-center">01 May 2019</h3>
-            <hr>
-        </div>
-        <div class="border border-secondary second-day col-sm">
-            <h3 class="mt-3 text-center">02 May 2019</h3>
-            <hr>
-        </div>
-        <div class="border border-secondary third-day col-sm">
-            <h3 class="mt-3 text-center">03 May 2019</h3>
-            <hr>
-        </div>
-    </div>
+    <div class="row bg-muted days"></div>
 </div>
-
+<form>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">lat/long</span>
+        </div>
+        <input id="long" type="text" aria-label="long" class="form-control">
+        <input id="lat" type="text" aria-label="lat" class="form-control">
+    </div>
+</form>
+<br>
+<button type="submit" id="submit-coordinates" class="submit btn btn-lg btn-secondary">Submit</button>
 <div id="map"></div>
 <script src="js/jquery-2.2.4.js"></script>
 <script src="js/keys.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 <script>
     var corsUrl = "https://cors-anywhere.herokuapp.com/";
     var darkSkyUrl = "https://api.darksky.net/forecast/";
     var darkSkyApiKey = darkSkyApi;
-    var lat = 27.4241;
-    var lng = -98.4936;
-    var weatherIcons = [
-        {name: "clear-day",
-            img: "img/clear-day.svg"
-        },
-        {name: "clear-night",
-            img: "img/clear-night.svg"
-        },
-        {name: "rain",
-            img: "img/rain.svg"
-        },
-        {name: "snow",
-            img: "img/snow.svg"
-        },
-        {name: "sleet",
-            img: "img/sleet.svg"
-        },
-        {name: "wind",
-            img: "img/wind.svg"
-        },
-        {name: "fog",
-            img: "img/fog.svg"
-        },
-        {name: "cloudy",
-            img: "img/cloudy.svg"
-        },
-        {name: "partly-cloudy-day",
-            img: "img/partly-cloudy-day.svg"
-        },
-        {name: "partly-cloudy-night",
-            img: "img/partly-cloudy-night.svg"
-        }
-    ];
-
-    for (var i = 0; i <= weatherIcons.length; i++){
-        console.log(weatherIcons[i]);
-    }
-
-    var dateObject = new Date(1551736889 * 1000);
-    console.log(dateObject.toString());
-
-    $.ajax(corsUrl + darkSkyUrl + darkSkyApiKey + "/" + lat + "," + lng).done(function (data) {
-            $('.first-day').append(
-                "<h5 class='mb-3 text-center'>" + data.daily.data[0].temperatureLow + "°" + "/" + data.daily.data[0].temperatureHigh + "°" + "</h5>",
-                "<p class='mb-3 text-center'> " + data.daily.data[0].summary + "</p>",
-                "<p class='mb-3 text-center'> Humidity: " + data.daily.data[0].humidity + "</p>",
-                "<p class='mb-3 text-center'> Wind: " + data.daily.data[0].windSpeed + "</p>",
-                "<p class='mb-3 text-center'> Pressure: " + data.daily.data[0].pressure + "</p>"
-            );
-             $('.second-day').append(
-                "<h5 class='mb-3 text-center'>" + data.daily.data[1].temperatureLow + "°" + "/" + data.daily.data[1].temperatureHigh + "°" + "</h5>",
-                 "<p class='mb-3 text-center'> " + data.daily.data[1].summary + "</p>",
-                 "<p class='mb-3 text-center'> Humidity: " + data.daily.data[1].humidity + "</p>",
-                "<p class='mb-3 text-center'> Wind: " + data.daily.data[1].windSpeed + "</p>",
-                "<p class='mb-3 text-center'> Pressure: " + data.daily.data[1].pressure + "</p>"
-            );
-            $('.third-day').append(
-                "<h5 class='mb-3 text-center'>" + data.daily.data[2].temperatureLow + "°" + "/" + data.daily.data[2].temperatureHigh + "°" + "</h5>",
-                "<p class='mb-3 text-center'> " + data.daily.data[2].summary + "</p>",
-                "<p class='mb-3 text-center'> Humidity: " + data.daily.data[2].humidity + "</p>",
-                "<p class='mb-3 text-center'> Wind: " + data.daily.data[2].windSpeed + "</p>",
-                "<p class='mb-3 text-center'> Pressure: " + data.daily.data[2].pressure + "</p>"
-            );
-            console.log(data);
-        });
+    var latitude = 29.4241;
+    var longitude = -98.4936;
 
     mapboxgl.accessToken = mapBoxKey;
     var map = new mapboxgl.Map({
         container: 'map',
         style: "mapbox://styles/mapbox/streets-v9",
-        zoom: 4,
-        center: [-95.3677, 29.7589]
+        zoom: 5,
+        center: [longitude, latitude]
     });
+
+    var marker = new mapboxgl.Marker({
+        draggable: true
+    }).setLngLat([longitude, latitude]).addTo(map);
+
+
+    function apiCall(lat, lng){
+        $.ajax(corsUrl + darkSkyUrl + darkSkyApiKey + "/" + lat + "," + lng).done(function (data) {
+            $('.days').html('');
+            data.daily.data.forEach(function (day, index) {
+                if (index < 3) {
+                    var dateString = new Date(day.time * 1000).toDateString();
+                    $('.days').append(
+                        "<div class='border border-secondary col-sm'>" +
+                        "<h2>" + dateString + "</h2>" +
+                        "<h5 class='mb-3 text-center'>" + day.temperatureLow + "°" + "/" + day.temperatureHigh + "°" + "</h5>" +
+                        '<img src="img/' + day.icon + '.svg">' +
+                        "<p class='mb-3 text-center'> " + day.summary + "</p>" +
+                        "<p class='mb-3 text-center'> Humidity: " + day.humidity + "</p>" +
+                        "<p class='mb-3 text-center'> Wind: " + day.windSpeed + "</p>" +
+                        "<p class='mb-3 text-center'> Pressure: " + day.pressure + "</p>" + "</div>"
+                    );
+                }
+            });
+            console.log(data);
+        });
+    }
+
+    $('.submit').click(function () {
+        var lat = parseFloat($('#lat').val());
+        var lng = parseFloat($('#long').val());
+
+
+        apiCall(lat,lng);
+    });
+
+    function onDragEnd(){
+        var lngLat = this.getLngLat();
+       apiCall(lngLat.lat, lngLat.lng);
+    }
+    marker.on('dragend', onDragEnd);
+    apiCall(latitude, longitude);
+
 </script>
 </body>
 </html>
